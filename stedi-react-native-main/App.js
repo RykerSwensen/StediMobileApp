@@ -57,7 +57,7 @@ export default function App() {
       </NavigationContainer>
     );
   } else {
-    return <Login />;
+    return <Login setUserLoggedIn={setUserLoggedIn} />;
   }
 }
 
