@@ -32,8 +32,9 @@ const getToken = async ({ phoneNumber, oneTimePassword, setUserLoggedIn }) => {
     setUserLoggedIn(true);
   }
 
-  const tokeResponseString = await tokenResponse.text();
-  console.log(tokeResponseString);
+  const tokenResponseString = await tokenResponse.text();
+  console.log(tokenResponseString);
+  console.log("Token", tokenResponse);
 };
 
 const Login = (props) => {
@@ -62,9 +63,9 @@ const Login = (props) => {
         style={styles.button}
         onPress={() => {
           //getToken({
-           // phoneNumber,
-            //oneTimePassword,
-            //setUserLoggedIn: props.setUserLoggedIn,
+          // phoneNumber,
+          //oneTimePassword,
+          //setUserLoggedIn: props.setUserLoggedIn,
           //});
           props.setUserLoggedIn(true);
         }}
