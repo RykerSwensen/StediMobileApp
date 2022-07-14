@@ -8,6 +8,8 @@ const Home = (props) => {
   return (
     <View>
       <Bar loggedInUser={props.loggedInUser} />
+
+      {/* <Text> Welcome email</Text>  */}
       <Icons />
     </View>
   );

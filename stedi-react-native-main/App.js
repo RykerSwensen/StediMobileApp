@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import Counter from "./Counter.js";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Login from "./Login.js";
+import Counter from "./Counter.js";
 import SettingsScreen from "./SettingsScreen.js";
 import Home from "./Home.js";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -14,6 +15,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userName, setUserName] = useState(""); //this creates a state variable to hold the user name once logged in
 
   if (userLoggedIn) {
     return (
@@ -25,7 +27,7 @@ export default function App() {
         >
           <Tab.Screen
             name="Home"
-            children={()=><Home loggedInUser='rykerswensen@gmail.com'/>}
+            children={() => <Home loggedInUser={userName} />}
             //component={Home}
             options={{
               tabBarLabel: "Home",
@@ -50,7 +52,7 @@ export default function App() {
             options={{
               tabBarLabel: "Settings",
               tabBarIcon: ({ color }) => (
-                <FontAwesome name="check" color={color} size={26} />
+                <FontAwesome name="gear" color={color} size={26} />
               ),
             }}
           />
@@ -58,12 +60,10 @@ export default function App() {
       </NavigationContainer>
     );
   } else {
-    return <Login setUserLoggedIn={setUserLoggedIn} />;
+    return (
+      <Login setUserLoggedIn={setUserLoggedIn} setUserName={setUserName} />
+    );
   }
 }
 
-const styles = StyleSheet.create({
-  margin: {
-    marginTop: 10,
-  },
-});
+const styles = StyleSheet.create({});
