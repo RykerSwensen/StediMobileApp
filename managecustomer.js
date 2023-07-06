@@ -1,5 +1,3 @@
-//© 2021 Sean Murdock
-
 let customerName = "";
 let phone = "";
 let bday = "";
